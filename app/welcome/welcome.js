@@ -1,9 +1,10 @@
 'use strict';
 
-angular.module('myApp.welcome', ['ngRoute'])
+angular.module('myApp.welcome', ['ui.router'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/', {
+.config(['$stateProvider', function($stateProvider) {
+  $stateProvider.state('welcome', {
+    url: '/',
     templateUrl: 'welcome/welcome.html',
     controller: 'WelcomeCtrl'
   });

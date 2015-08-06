@@ -2,7 +2,7 @@
 
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
-  'ngRoute',
+  'ui.router',
   'myApp.list',
   'myApp.new',
   'myApp.welcome',
@@ -12,6 +12,6 @@ angular.module('myApp', [
 // TODO: Replace ng-router with ui-router.  See http://www.funnyant.com/angularjs-ui-router/
 // The bit about state machines is what we need...
 
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/'});
+config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise('/');
 }]);
