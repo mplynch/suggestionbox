@@ -1,12 +1,12 @@
-<div class="jumbotron text-center">
-  <h2>What type of suggestion is this?</h2>
+  <h4>What type of suggestion is this?</h4>
   <p>
-    <select>
+    <select ng-model="suggestion.type">
       <option ng-repeat="type in types | orderBy:'text'" value="{{type.value}}">{{type.text}}</option>
     </select>
   </p>
   <br/>
-  <a ui-sref="new.actiontype">
-    <button class="btn btn-lg" type="button">Next</button>
-  </a>
-</div>
+  <p>
+    <a ui-sref="new.actiontype">
+      <button class="btn btn-lg" type="button">Next</button>
+    </a>
+  </p>

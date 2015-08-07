@@ -1,24 +1,15 @@
-<div class="jumbotron text-center">
-  <h2>What is the source of this suggestion?</h2>
-  <p>
-    <select>
-      <option value="Customer">Customer</option>
-      <option value="Employee Observation">Employee Observation</option>
-      <option value="External Audit">External Audit</option>
-      <option value="Incident Investigation">Incident Investigation</option>
-      <option value="Internal Audit">Internal Audit</option>
-      <option value="Management Review">Management Review</option>
-      <option value="Other">Other</option>
-      <option value="Safety Walkthrough">Safety Walkthrough</option>
-      <option value="SER">SER</option>
-      <option value="Supplier">Supplier Issue</option>
-    </select>
-  </p>
-  <br />
+<h4>What is the source of this suggestion?</h4>
+<p>
+  <select ng-model="suggestion.source">
+    <option ng-repeat="source in sources | orderBy:'text'" value="{{source.value}}">{{source.text}}</option>
+  </select>
+</p>
+<br/>
+<p>
   <a ui-sref="new.actiontype">
     <button class="btn btn-lg" type="button">Back</button>
   </a>
   <a ui-sref="new.description">
     <button class="btn btn-lg" type="button">Next</button>
   </a>
-</div>
+</p>

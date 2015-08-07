@@ -6,7 +6,8 @@ angular.module('myApp', [
   'myApp.list',
   'myApp.new',
   'myApp.welcome',
-  'myApp.version'
+  'myApp.version',
+  'myApp.datastub'
 ]).
 
 // TODO: Replace ng-router with ui-router.  See http://www.funnyant.com/angularjs-ui-router/

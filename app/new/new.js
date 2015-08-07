@@ -1,12 +1,13 @@
 'use strict';
 
-angular.module('myApp.new', ['ui.router'])
+angular.module('myApp.new', ['ui.router', 'myApp.datastub'])
 
 .config(['$stateProvider', function($stateProvider) {
 
   $stateProvider
 
     .state('new', {
+    abstract: true,
     url: '/new',
     templateUrl: 'new/new.html',
     controller: 'NewCtrl'
@@ -31,38 +32,44 @@ angular.module('myApp.new', ['ui.router'])
   .state('new.description', {
     url: '/description',
     templateUrl: 'new/new-description.html'
+  })
+
+  .state('new.supervisor', {
+    url: '/supervisor',
+    templateUrl: 'new/new-supervisor.html'
+  })
+
+  .state('new.review', {
+    url: '/review',
+    templateUrl: 'new/new-review.html'
+  })
+
+  .state('new.finished', {
+    url: '/finished',
+    templateUrl: 'new/new-finished.html'
   });
 }])
 
-.controller('NewCtrl', ['$scope', function($scope) {
-  $scope.types = [{
-    "text": "Health, Safety, Environmental",
-    "value": "HSE"
-  }, {
-    "text": "Quality",
-    "value": "Quality",
-  }, {
-    "text": "Other",
-    "value": "Other"
-  }];
+.controller('NewCtrl', ['$scope', '$state', 'datastub', function($scope, $state, datastub) {
+  $scope.suggestion = {};
+  $scope.types = datastub.types;
+  $scope.actiontypes = datastub.actiontypes;
+  $scope.locations = datastub.locations;
+  $scope.sources = datastub.sources;
+  $scope.supervisors = datastub.supervisors;
 
-  $scope.actiontypes = [{
-    "text": "Continual Improvement",
-    "value": "Continual Improvement"
-  }, {
-    "text": "Corrective",
-    "value": "Corrective"
-  }, {
-    "text": "Ergonomic",
-    "value": "Ergonomic"
-  }, {
-    "text": "Other",
-    "value": "Other"
-  }, {
-    "text": "Preventative",
-    "value": "Preventative"
-  }, {
-    "text": "Positive Feedback",
-    "value": "Positive Feedback"
-  }];
+  var stateOrder = ['new.type', 'new.actiontype', 'new.source', 'new.description', 'new.supervisor', 'new.review'];
+
+  $scope.goToNextState = function() {
+    // TODO: Validate data and dynamically go to next state
+  };
+
+  $scope.goToPreviousState = function() {
+    // TODO: Go to previous state
+  };
+
+  $scope.processForm = function() {
+    $state.go('new.finished');
+  };
+
 }]);
