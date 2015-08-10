@@ -4,6 +4,7 @@
 angular.module('myApp', [
   'ngAnimate',
   'ui.router',
+  'ui.grid',
   'myApp.list',
   'myApp.new',
   'myApp.welcome',
